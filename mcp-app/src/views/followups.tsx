@@ -1,0 +1,4 @@
+export default function Followups({ toolOutput }: { toolOutput?: { leads?: Array<{ lead_id: string; business_name: string; status: string }> } }) {
+  const leads = toolOutput?.leads ?? [];
+  return <div style={{ fontFamily: "Inter, system-ui, sans-serif", padding: 20, maxWidth: 760, margin: "auto" }}><div style={{ fontSize: 12, opacity: .6 }}>AUTOMIQ ⚡ · FOLLOW-UPS</div><h2 style={{ margin: "5px 0 14px" }}>Follow-up queue</h2>{leads.length ? leads.map((lead) => <div key={lead.lead_id} style={{ border: "1px solid #e5e7eb", borderRadius: 12, padding: 14, marginBottom: 8 }}><strong>{lead.business_name}</strong><div style={{ fontSize: 13, opacity: .65 }}>{lead.status} · {lead.lead_id}</div></div>) : <p style={{ opacity: .65 }}>Ask the assistant who needs follow-up today.</p>}<div style={{ marginTop: 12, fontSize: 12, opacity: .55 }}>Status changes and sending remain approval-gated in the MVP.</div></div>;
+}
